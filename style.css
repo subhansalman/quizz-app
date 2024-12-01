@@ -1,0 +1,33 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.container{
+    width: 60%;
+    margin: 50px auto;
+}
+
+.container .header{
+    background-color: #67d4a3;
+}
+
+.body li{
+    background-color: rgb(22, 83, 206);
+    padding: 8px;
+    list-style: none;
+    margin: 10px 0px;
+    cursor: pointer;
+    color: #fff;
+}
+
+#resultContainer{
+    display: none;
+}
+
+.footer{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
