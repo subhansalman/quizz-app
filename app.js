@@ -135,12 +135,24 @@ function handleQuestion(){
     currentQuestion.innerHTML=indexNumber+1
 }
 
+
 function nextQues(){
     if(indexNumber < quizQuestions.length-1){
         nextBtn.disable=true;
         indexNumber++;
         handleQuestion();
     }else{
-        console.log()
+        console.log("Form Submit")
+        console.log("Correct Answere",correctAns)
+        console.log("Wrong Answere",incorrectAns)
+        console.log((correctAns/quizQuestions.length)*100)
+        quizContainer.style.display="none"
+        var resultContainer=document.getElementById("resultContainer")
+        resultContainer.style.display="block"
+
+        resultContainer.innerHTML=`<h1>Correct Ans: ${correctAns}</h1>
+        <h1>Wrong Ans: ${incorrectAns}</h1>
+        <h1>Percentage: ${(correctAns/quizQuestions.length)*100} %</h1>`
     }
+
 }
