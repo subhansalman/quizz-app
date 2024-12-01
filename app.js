@@ -111,18 +111,18 @@ const quizQuestions = [
     }
 ];
 
+var quizContainer=document.getElementById("quizzcontainer")
 var quizElement=document.getElementById("quizElement");
 var optionElement=document.getElementById("optionElement");
+var nextBtn=document.getElementById("nextquestion")
 var currentQuestion=document.getElementById("currentquestion");
 var totalCount=document.getElementById("totalcount");
 totalCount.innerHTML=quizQuestions.length;
 var indexNumber=0;
-var nextBtn=document.getElementById("nextquestion")
 
 var correctAns=0;
 var incorrectAns=0;
 
-var quizContainer=document.getElementById("quizzcontainer")
 
 function handleQuestion(){
     var optionsObj=quizQuestions[indexNumber].options;
