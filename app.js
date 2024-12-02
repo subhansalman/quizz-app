@@ -126,11 +126,12 @@ var incorrectAns=0;
 
 function handleQuestion(){
     var optionsObj=quizQuestions[indexNumber].options;
-    quizElement=quizQuestions[indexNumber].question;
-    optionsObj="";
-    for(var key in optionsObj){
-        optionElement +=`<li onclick="checkAns(this)">${optionsObj}</li>`
+    quizElement.innerHTML = quizQuestions[indexNumber].question; // Correct
+    optionElement.innerHTML = ""; // Correct: Clear previous options
+    for (var key in optionsObj) {
+    optionElement.innerHTML += `<li onclick="checkAns(this)">${optionsObj[key]}</li>`;
     }
+
 
     currentQuestion.innerHTML=indexNumber+1
 }
@@ -164,31 +165,31 @@ function nextQues(){
 
 
 function checkAns(element){
-    var allLiElement=optionElement.children
-    var userSelection=element.innerHTML.toLowerCase()
-    console.log(userSelection,"User Selection")
-    var ans=quizQuestions[indexNumber].answer
-    var result=userSelection===ans
+    var allLiElement = optionElement.children;
+    var userSelection=element.innerHTML.toLowerCase();
+    console.log(userSelection,"User Selection");
+    var ans=quizQuestions[indexNumber].answer;
+    var result=userSelection===ans;
 
     if(result){
-        allLiElement.style.backgroundColor="green"
+        element.style.backgroundColor="green"
         correctAns++
     }else{
-        allLiElement.style.backgroundColor="red"
+        element.style.backgroundColor="red"
         incorrectAns++
 
         for(var i=0; i<allLiElement.length; i++){
             if(allLiElement[i].innerHTML.toLowerCase()===ans){
                 allLiElement[i].style.backgroundColor="green"
             }
-            break
+            // break
         }
         
     }
     for(var i=0; i<allLiElement; i++){
         allLiElement[i].style.pointerEvents="none"
     }
-    nextBtn.disable=false
+    nextBtn.disable=false;
 }
 
 var timerMin = 4
@@ -200,11 +201,14 @@ function timer(){
 
     console.log(timerMin, "timerMin")
     console.log(timerSec,"timerSec")
-    if(timerSec==0){
+    if(timerSec===0){
         timerMin--
-        timerSec=60
-        if(timer=0){
+        timerSec=59
+        if(timer < timerMin){
             clearInterval(interval)
         }
     }
 }
+
+
+handleQuestion()
