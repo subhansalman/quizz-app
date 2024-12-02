@@ -156,3 +156,55 @@ function nextQues(){
     }
 
 }
+
+
+
+
+
+
+
+function checkAns(element){
+    var allLiElement=optionElement.children
+    var userSelection=element.innerHTML.toLowerCase()
+    console.log(userSelection,"User Selection")
+    var ans=quizQuestions[indexNumber].answer
+    var result=userSelection===ans
+
+    if(result){
+        allLiElement.style.backgroundColor="green"
+        correctAns++
+    }else{
+        allLiElement.style.backgroundColor="red"
+        incorrectAns++
+
+        for(var i=0; i<allLiElement.length; i++){
+            if(allLiElement[i].innerHTML.toLowerCase()===ans){
+                allLiElement[i].style.backgroundColor="green"
+            }
+            break
+        }
+        
+    }
+    for(var i=0; i<allLiElement; i++){
+        allLiElement[i].style.pointerEvents="none"
+    }
+    nextBtn.disable=false
+}
+
+var timerMin = 4
+var timerSec = 5
+var interval=setInterval(timer,1000)
+
+function timer(){
+    timerSec--
+
+    console.log(timerMin, "timerMin")
+    console.log(timerSec,"timerSec")
+    if(timerSec==0){
+        timerMin--
+        timerSec=60
+        if(timer=0){
+            clearInterval(interval)
+        }
+    }
+}
